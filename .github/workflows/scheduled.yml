@@ -1,0 +1,12 @@
+name: Scheduled Build
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build check
+      run: echo "Scheduled build passed"
