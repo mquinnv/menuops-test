@@ -1,0 +1,26 @@
+name: Test Webhook
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Starting test
+      run: echo "Starting webhook test - this should trigger workflow_run requested/in_progress events"
+      
+    - name: Wait 10 seconds
+      run: sleep 10
+      
+    - name: Test step
+      run: echo "Testing webhook delivery to MenuOps"
+      
+    - name: Another step
+      run: echo "This should trigger workflow_run completed event"

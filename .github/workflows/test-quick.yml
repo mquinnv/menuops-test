@@ -1,0 +1,11 @@
+name: Quick Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  quick:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Quick pass
+      run: echo "Done"

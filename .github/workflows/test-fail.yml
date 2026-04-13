@@ -1,0 +1,23 @@
+name: Test Failure
+
+on:
+  workflow_dispatch:
+    inputs:
+      should_pass:
+        description: 'Pass instead of fail'
+        type: boolean
+        default: false
+
+jobs:
+  fail:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test result
+      env:
+        SHOULD_PASS: ${{ inputs.should_pass }}
+      run: |
+        if [ "$SHOULD_PASS" = "true" ]; then
+          echo "Passing on request"
+        else
+          exit 1
+        fi
